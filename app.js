@@ -27,21 +27,26 @@ function addBookToLibrary(title, author, pages, read){
 function displayLibrary(myLibrary){
     const parentDiv = document.querySelector('.library');
 
-    for(let book of myLibrary){
+    while(parentDiv.firstChild){
+        parentDiv.removeChild(parentDiv.lastChild);
+    }
+
+    for(let i = 0; i < myLibrary.length; i++){
+        console.log(i)
         let card = document.createElement("div");
         card.classList.add("card");
 
         let title  = document.createElement("h2");
-        title.textContent = `${book.title}`;
+        title.textContent = `${myLibrary[i].title}`;
 
         let author = document.createElement("h3");
-        author.textContent = `By: ${book.author}`;
+        author.textContent = `By: ${myLibrary[i].author}`;
 
         let pages = document.createElement("p");
-        pages.textContent = `Pages: ${book.pages}`;
+        pages.textContent = `Pages: ${myLibrary[i].pages}`;
 
         let read = document.createElement("p");
-        read.textContent = `Status: ${book.read}`;
+        read.textContent = `Status: ${myLibrary[i].read}`;
 
         card.appendChild(title);
         card.appendChild(author);
@@ -67,6 +72,7 @@ submitForm.addEventListener('submit', function(e){
         let read = document.querySelector('#read');
         addBookToLibrary(title.value, author.value, pages.value, read.value);
         dialog.close();
+        
         
     }
     else {
