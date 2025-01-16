@@ -72,14 +72,13 @@ submitForm.addEventListener('submit', function(e){
         let read = document.querySelector('#read');
         addBookToLibrary(title.value, author.value, pages.value, read.value);
         dialog.close();
-        
-        
+        submitForm.reset();
     }
     else {
         let read = document.querySelector('#not-read');
         addBookToLibrary(title.value, author.value, pages.value, read.value);
         dialog.close();
-       
+        submitForm.reset();
     }
 
     
