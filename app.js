@@ -3,6 +3,7 @@ const addBookButton = document.querySelector('.create-books-button');
 const dialog = document.querySelector('dialog');
 const submitForm = document.querySelector('form');
 
+
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -35,7 +36,7 @@ function displayLibrary(myLibrary){
         console.log(i)
         let card = document.createElement("div");
         card.classList.add("card");
-        card.id = `${i}`;
+       
 
         let title  = document.createElement("h2");
         title.textContent = `${myLibrary[i].title}`;
@@ -55,11 +56,13 @@ function displayLibrary(myLibrary){
         let deleteButton = document.createElement("button");
         deleteButton.classList.add("delete-btn");
         deleteButton.textContent = "Delete";
+        deleteButton.setAttribute("onclick","deleteBook(event)");
+        deleteButton.id = `${i}`;
 
         let toggleButton = document.createElement("button");
         toggleButton.classList.add("toggle-btn");
         toggleButton.textContent = "Toggle";
-
+        toggleButton.setAttribute("onclick","deleteBook(event)");
 
         card.appendChild(title);
         card.appendChild(author);
@@ -72,8 +75,10 @@ function displayLibrary(myLibrary){
     }
 }
 
-function deleteBook(){
-
+function deleteBook(event){
+    console.log(event.target.id)
+    myLibrary.splice(event.target.id, 1);
+    displayLibrary(myLibrary);
 }
 
 
