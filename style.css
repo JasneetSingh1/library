@@ -7,7 +7,20 @@
 
 body{
     height: 100vh;
-    max-width: 1200px;   
+    max-width: 1200px;  
+    background-color: rgb(249 250 251); 
+}
+
+h1{
+    font-size: 56px;
+}
+
+h1,h2,h3{
+    color: rgb(31 41 55);
+}
+
+p{
+    color: #374151;
 }
 
 .create-books{
@@ -25,7 +38,29 @@ body{
 .create-books > button {
     padding: 16px 32px;
     font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 5px 2px #f2f2f2;
+    cursor: pointer;
+    background-color: #5497DA;
+    color: #fff;
+    font-size: 18px;
 }
+
+.create-books > button:hover{
+    background-color: #7ca4cc;
+    
+   
+    transition: all 200ms ease-in-out;
+}
+
+.create-books > button:active{
+    scale: .98;
+}
+
+
+
+
 
 
 .library{
@@ -42,6 +77,6 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #f2f2f2;
+    border: 2px solid #f2f2f2;
     box-shadow: 2px 2px 5px 2px #f2f2f2;
 }

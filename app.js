@@ -35,10 +35,10 @@ function displayLibrary(myLibrary){
         let author = document.createElement("h3");
         author.textContent = `By: ${book.author}`;
 
-        let pages = document.createElement("h4");
+        let pages = document.createElement("p");
         pages.textContent = `Pages: ${book.pages}`;
 
-        let read = document.createElement("h4");
+        let read = document.createElement("p");
         read.textContent = `Status: ${book.read}`;
 
         card.appendChild(title);
