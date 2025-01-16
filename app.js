@@ -35,6 +35,7 @@ function displayLibrary(myLibrary){
         console.log(i)
         let card = document.createElement("div");
         card.classList.add("card");
+        card.id = `${i}`;
 
         let title  = document.createElement("h2");
         title.textContent = `${myLibrary[i].title}`;
@@ -48,13 +49,31 @@ function displayLibrary(myLibrary){
         let read = document.createElement("p");
         read.textContent = `Status: ${myLibrary[i].read}`;
 
+        let buttonDiv = document.createElement("div");
+        buttonDiv.classList.add("buttonDiv");
+
+        let deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-btn");
+        deleteButton.textContent = "Delete";
+
+        let toggleButton = document.createElement("button");
+        toggleButton.classList.add("toggle-btn");
+        toggleButton.textContent = "Toggle";
+
+
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
         card.appendChild(read);
-
+        buttonDiv.appendChild(deleteButton);
+        buttonDiv.appendChild(toggleButton);
+        card.appendChild(buttonDiv);
         parentDiv.appendChild(card);
     }
+}
+
+function deleteBook(){
+
 }
 
 
