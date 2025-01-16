@@ -1,17 +1,13 @@
 const myLibrary = [];
 const addBookButton = document.querySelector('.create-books-button');
 const dialog = document.querySelector('dialog');
-const submitFormButton = document.querySelector('form-submit');
-
-addBookButton.addEventListener('click',() => {
-    dialog.showModal();
-} )
+const submitForm = document.querySelector('form');
 
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read.toLowerCase();
+    this.read = read
 
     this.info = function(){
         let result = '';
@@ -31,7 +27,7 @@ function addBookToLibrary(title, author, pages, read){
 function displayLibrary(myLibrary){
     const parentDiv = document.querySelector('.library');
 
-    for(const book of myLibrary){
+    for(let book of myLibrary){
         let card = document.createElement("div");
         card.classList.add("card");
 
@@ -56,8 +52,33 @@ function displayLibrary(myLibrary){
     }
 }
 
-addBookToLibrary('Harry Potter', 'J.R.R Tolkien', 500, 'yes');
-addBookToLibrary('Harry Potter', 'J.R.R Tolkien', 500, 'yes');
-addBookToLibrary('Harry Potter', 'J.R.R Tolkien', 500, 'yes');
 
-displayLibrary(myLibrary);
+addBookButton.addEventListener('click',() => {
+    dialog.showModal();
+} )
+
+submitForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    let title = document.querySelector('#title');
+    let author = document.querySelector('#author');
+    let pages = document.querySelector('#pages');
+    
+    if(document.querySelector("#read").checked){
+        let read = document.querySelector('#read');
+        addBookToLibrary(title.value, author.value, pages.value, read.value);
+        dialog.close();
+        
+    }
+    else {
+        let read = document.querySelector('#not-read');
+        addBookToLibrary(title.value, author.value, pages.value, read.value);
+        dialog.close();
+       
+    }
+
+    
+    console.log(myLibrary)
+    displayLibrary(myLibrary)
+    
+})
+
