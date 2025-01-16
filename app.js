@@ -1,5 +1,6 @@
 const myLibrary = [];
 
+
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -26,12 +27,17 @@ function displayLibrary(myLibrary){
 
     for(const book of myLibrary){
         let card = document.createElement("div");
+        card.classList.add("card");
+
         let title  = document.createElement("h2");
         title.textContent = `${book.title}`;
+
         let author = document.createElement("h3");
         author.textContent = `By: ${book.author}`;
+
         let pages = document.createElement("h4");
         pages.textContent = `Pages: ${book.pages}`;
+
         let read = document.createElement("h4");
         read.textContent = `Status: ${book.read}`;
 
@@ -44,3 +50,8 @@ function displayLibrary(myLibrary){
     }
 }
 
+addBookToLibrary('Harry Potter', 'J.R.R Tolkien', 500, 'yes');
+addBookToLibrary('Harry Potter', 'J.R.R Tolkien', 500, 'yes');
+addBookToLibrary('Harry Potter', 'J.R.R Tolkien', 500, 'yes');
+
+displayLibrary(myLibrary);
