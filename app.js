@@ -20,6 +20,14 @@ function Book(title, author, pages, read){
     }
 }
 
+Object.prototype.toggleRead = function (){
+    if(this.read == 'yes'){
+        this.read = 'no';
+    }else{
+        this.read = 'yes';
+    }
+}
+
 function addBookToLibrary(title, author, pages, read){
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
@@ -33,7 +41,7 @@ function displayLibrary(myLibrary){
     }
 
     for(let i = 0; i < myLibrary.length; i++){
-        console.log(i)
+        
         let card = document.createElement("div");
         card.classList.add("card");
        
@@ -48,7 +56,7 @@ function displayLibrary(myLibrary){
         pages.textContent = `Pages: ${myLibrary[i].pages}`;
 
         let read = document.createElement("p");
-        read.textContent = `Status: ${myLibrary[i].read}`;
+        read.textContent = `Read? ${myLibrary[i].read}`;
 
         let buttonDiv = document.createElement("div");
         buttonDiv.classList.add("buttonDiv");
@@ -57,12 +65,13 @@ function displayLibrary(myLibrary){
         deleteButton.classList.add("delete-btn");
         deleteButton.textContent = "Delete";
         deleteButton.setAttribute("onclick","deleteBook(event)");
-        deleteButton.id = `${i}`;
-
+        deleteButton.setAttribute("value", `${i}`);
+        
         let toggleButton = document.createElement("button");
         toggleButton.classList.add("toggle-btn");
         toggleButton.textContent = "Toggle";
-        toggleButton.setAttribute("onclick","deleteBook(event)");
+        toggleButton.setAttribute("value", `${i}`);
+        toggleButton.setAttribute("onclick","toggleBook(event)");
 
         card.appendChild(title);
         card.appendChild(author);
@@ -75,9 +84,15 @@ function displayLibrary(myLibrary){
     }
 }
 
-function deleteBook(event){
-    console.log(event.target.id)
-    myLibrary.splice(event.target.id, 1);
+function deleteBook(event){ 
+    myLibrary.splice(event.target.value, 1);
+    displayLibrary(myLibrary);
+}
+
+function toggleBook(event){
+    let book = myLibrary[event.target.value];
+    console.log(book)
+    book.toggleRead();
     displayLibrary(myLibrary);
 }
 
@@ -106,7 +121,7 @@ submitForm.addEventListener('submit', function(e){
     }
 
     
-    console.log(myLibrary)
+
     displayLibrary(myLibrary)
     
 })
