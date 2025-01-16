@@ -12,3 +12,6 @@ To safeguard against potential security risks, avoided using innerHTML to create
 
 .Library
 Will create a CSS Grid to display the individual book cards
+
+## Adding new book
+Will use a dialog to open when new book button is clicked
