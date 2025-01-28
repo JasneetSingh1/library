@@ -4,29 +4,34 @@ const dialog = document.querySelector('dialog');
 const submitForm = document.querySelector('form');
 
 
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read
 
-    this.info = function(){
-        let result = '';
-        if(this.read == 'yes'){
-            return result = `${this.title} by ${this.author}, ${pages} pages, read it`;
-        }else{
-            return result = `${this.title} by ${this.author}, ${pages} pages, not read yet`;
+class Book{
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+
+        this.info = function(){
+            let result = '';
+            if(this.read == 'yes'){
+                return result = `${this.title} by ${this.author}, ${pages} pages, read it`;
+            }else{
+                return result = `${this.title} by ${this.author}, ${pages} pages, not read yet`;
+            }
         }
     }
+
+        toggleRead(){
+        if(this.read == 'yes'){
+            this.read = 'no';
+        }else{
+            this.read = 'yes';
+        }
+    }
+
 }
 
-Object.prototype.toggleRead = function (){
-    if(this.read == 'yes'){
-        this.read = 'no';
-    }else{
-        this.read = 'yes';
-    }
-}
 
 function addBookToLibrary(title, author, pages, read){
     let book = new Book(title, author, pages, read);
@@ -91,7 +96,6 @@ function deleteBook(event){
 
 function toggleBook(event){
     let book = myLibrary[event.target.value];
-    console.log(book)
     book.toggleRead();
     displayLibrary(myLibrary);
 }
